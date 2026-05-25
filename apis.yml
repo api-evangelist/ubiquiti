@@ -1,0 +1,227 @@
+aid: ubiquiti
+url: https://raw.githubusercontent.com/api-evangelist/ubiquiti/refs/heads/main/apis.yml
+apis:
+- aid: ubiquiti:unifi-site-manager-api
+  name: UniFi Site Manager API
+  tags:
+  - Networking
+  - UniFi
+  - Site Manager
+  - Cloud
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  properties:
+  - url: https://developer.ui.com/site-manager-api/
+    type: Documentation
+  - url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+    type: GettingStarted
+  - url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+    type: Documentation
+  - url: https://developer.ui.com/site-manager-api/versioncontrol
+    type: Versioning
+  - url: https://developer.ui.com/site-manager-api/responseformat/
+    type: Documentation
+  - url: openapi/ubiquiti-unifi-site-manager-api-openapi.yml
+    type: OpenAPI
+  description: The UniFi Site Manager API is Ubiquiti's official cloud API at api.ui.com for programmatic access
+    to UniFi deployments across all sites linked to a UI account. Endpoints expose hosts (UniFi OS consoles),
+    sites (UniFi Network applications), devices, ISP metrics (latency, packet loss, uptime, bandwidth), and
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated at unifi.ui.com/settings/api-keys.
+    Read-only at GA; write scope (adopt, configure) is being rolled out through 2026. GA rate limit is 10,000
+    requests per minute; Early Access endpoints under `/ea/` are limited to 100 requests per minute.
+- aid: ubiquiti:unifi-network-controller-api
+  name: UniFi Network Controller API
+  tags:
+  - Networking
+  - UniFi
+  - Controller
+  - Local API
+  humanURL: https://ubntwiki.com/products/software/unifi-controller/api
+  properties:
+  - url: https://ubntwiki.com/products/software/unifi-controller/api
+    type: Documentation
+  - url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+    type: Documentation
+  - url: https://github.com/Art-of-WiFi/UniFi-API-client
+    type: SDK
+  - url: https://github.com/ubiquiti-community/unifi-api
+    type: Documentation
+  description: The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller
+    (UDM, UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with
+    `/api/s/{site}/` on a standalone controller, or `/proxy/network/api/s/{site}/` on UniFi OS devices. It
+    covers sites, devices, clients, stats (`stat/health`, `stat/sta`, `stat/device`), settings, wireless
+    networks, firewall, port forwards, vouchers, hotspot, alerts, and events. Authentication is via
+    `/api/auth/login` on UniFi OS. Responses follow the `{ "meta": { "rc": "ok" }, "data": [...] }` shape.
+    Not formally documented by Ubiquiti; reverse-engineered conventions captured in community wikis and
+    third-party SDKs.
+- aid: ubiquiti:uisp-nms-api
+  name: UISP Network (NMS) API
+  tags:
+  - ISP
+  - UISP
+  - WISP
+  - Network Management
+  humanURL: https://uisp.ui.com/nms/api-docs/
+  properties:
+  - url: https://help.uisp.com/hc/en-us/sections/22589678457879-UISP-Network
+    type: Documentation
+  - url: https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage
+    type: Documentation
+  description: The UISP Network (NMS) API is the per-instance REST API for the network-management half of
+    UISP — Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are
+    served from each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`,
+    `/nms/api/v2.1/devices/{id}/detail`, sites, outages, alerts, statistics). Authentication uses an
+    `x-auth-token` header carrying an API token generated in the UISP console; tokens can be issued in
+    read-only or read/write mode. A live Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on
+    every UISP installation.
+- aid: ubiquiti:uisp-crm-api
+  name: UISP CRM API
+  tags:
+  - ISP
+  - UISP
+  - WISP
+  - CRM
+  - Billing
+  humanURL: https://unmscrm.docs.apiary.io/
+  properties:
+  - url: https://unmscrm.docs.apiary.io/
+    type: Documentation
+  - url: https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage
+    type: Documentation
+  description: The UISP CRM API is the per-instance REST API for the customer-relationship-management half
+    of UISP, covering clients, services (subscriptions), invoices, payments, quotes, tickets, jobs, taxes,
+    and product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`.
+    Authentication uses an `X-Auth-App-Key` header carrying an App Key generated under
+    Settings → Security → App keys. The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
+name: Ubiquiti
+tags:
+- Networking
+- WiFi
+- Switching
+- Routing
+- Surveillance
+- Access Control
+- ISP
+- WISP
+- UniFi
+- UISP
+- AmpliFi
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://www.ui.com
+- type: Portal
+  url: https://developer.ui.com
+  name: UniFi Developer Portal
+- type: Documentation
+  url: https://developer.ui.com/site-manager-api/
+  name: UniFi Site Manager API Documentation
+- type: GettingStarted
+  url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  name: Getting Started with the Official UniFi API
+- type: Documentation
+  url: https://ubntwiki.com/products/software/unifi-controller/api
+  name: UniFi Controller API (Community Wiki)
+- type: Documentation
+  url: https://help.uisp.com/
+  name: UISP Help Center
+- type: Documentation
+  url: https://unmscrm.docs.apiary.io/
+  name: UISP CRM API on Apiary
+- type: Portal
+  url: https://amplifi.com
+  name: AmpliFi
+- type: SignUp
+  url: https://account.ui.com
+  name: UI Account
+- type: Authentication
+  url: https://unifi.ui.com/settings/api-keys
+  name: UniFi Site Manager API Keys
+- type: RateLimits
+  url: https://developer.ui.com/site-manager-api/
+  name: UniFi Site Manager Rate Limits
+- type: Versioning
+  url: https://developer.ui.com/site-manager-api/versioncontrol
+- type: StatusPage
+  url: https://status.ui.com
+- type: Blog
+  url: https://www.ui.com/blog
+- type: Forum
+  url: https://community.ui.com
+  name: Ubiquiti Community
+- type: Support
+  url: https://help.ui.com
+  name: Ubiquiti Help Center
+- type: TermsOfService
+  url: https://www.ui.com/legal/termsofservice/
+- type: PrivacyPolicy
+  url: https://www.ui.com/legal/privacypolicy/
+- type: Investors
+  url: https://ir.ui.com/
+- type: GitHubOrganization
+  url: https://github.com/ubiquiti
+- type: GitHubOrganization
+  url: https://github.com/ubiquiti-community
+  name: Ubiquiti Community GitHub Org
+- type: SDK
+  url: https://github.com/Art-of-WiFi/UniFi-API-client
+  name: Art-of-WiFi UniFi PHP API client
+- type: SDK
+  url: https://github.com/ubiquiti-community/go-unifi
+  name: go-unifi (Go SDK)
+- type: SDK
+  url: https://github.com/ubiquiti-community/py-unifi
+  name: py-unifi (Python SDK)
+- type: SDK
+  url: https://github.com/DiegoMax/uisp
+  name: UISP CRM TypeScript library
+- type: Tool
+  url: https://github.com/ubiquiti-community/terraform-provider-unifi
+  name: Terraform provider for UniFi
+- type: Tool
+  url: https://github.com/ubiquiti-community/external-dns-unifi-webhook
+  name: External-DNS Webhook for UniFi DNS
+- type: Plans
+  url: plans/ubiquiti-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ubiquiti-rate-limits.yml
+- type: Features
+  data:
+  - UniFi — full-stack networking with WiFi access points (UniFi 7), switches, routers (Dream Machine, Dream Router, Dream Wall), VPN, identity, protect cameras, access control, and talk VoIP
+  - UniFi Site Manager — cloud-based multi-site management at unifi.ui.com with an official REST API at api.ui.com/v1
+  - UniFi Network Controller — on-premises controller (UDM/UDR/Cloud Key/self-host) with a local REST API used by mobile apps and the web console
+  - UISP — purpose-built management platform for wireless ISPs and fiber operators, combining NMS (devices, sites, outages) and CRM (clients, invoices, payments)
+  - AmpliFi — consumer mesh WiFi line with Teleport VPN; managed via mobile app (no public API)
+  - airMAX / airFiber / GigaBeam / LTU — point-to-point and point-to-multipoint outdoor radios for ISPs
+  - UniFi Protect — camera and NVR ecosystem with motion analytics and AI detection
+  - UniFi Access — door access control with NFC, mobile credentials, and visitor management
+  - UniFi Talk — cloud-hosted VoIP for SMB
+  - WiFiman speed-test and discovery tools, plus the WiFiman developer SDK
+  - Official Postman / curl quickstarts and rate-limit headers on the Site Manager API
+  - Read-only API keys at GA; write scope (adopt, configure) rolling out through 2026
+  sources:
+  - https://developer.ui.com/site-manager-api/
+  - https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - https://www.ui.com
+  - https://ir.ui.com/
+  updated: '2026-05-25'
+created: '2026-05-25T00:00:00.000Z'
+modified: '2026-05-25'
+position: Consuming
+description: Ubiquiti Inc. (NYSE&#58; UI) is an American networking technology company that designs and sells
+  wireless and wired network products for enterprises, service providers, and consumers under the UniFi, UISP,
+  AmpliFi, airMAX, airFiber, and EdgeMax brands. UniFi is a full-stack platform spanning WiFi, switching,
+  routing, identity, surveillance (Protect), access control (Access), and VoIP (Talk), managed locally by the
+  UniFi Network Controller and globally via the UniFi Site Manager cloud at unifi.ui.com. UISP is Ubiquiti's
+  ISP platform combining a Network Management System (NMS) and a Customer Relationship Management (CRM)
+  module for wireless and fiber service providers. The official UniFi Site Manager API exposes hosts, sites,
+  devices, ISP metrics, and SD-WAN configurations at api.ui.com/v1 with X-API-KEY authentication; UISP NMS
+  and CRM APIs are hosted on each customer instance under /nms/api/v2.1/ and /crm/api/v1.0/ respectively.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

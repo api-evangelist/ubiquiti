@@ -1,0 +1,77 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Ubiquiti
+providerId: ubiquiti
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Networking
+  - UniFi
+  - UISP
+description: |
+  Ubiquiti does not charge for use of the UniFi Site Manager API, the UniFi
+  Network Controller API, or the UISP NMS/CRM APIs. APIs are bundled with the
+  underlying hardware/software purchases. The "plans" here describe the access
+  tiers (free) rather than commercial pricing tiers.
+sources:
+  - https://developer.ui.com/site-manager-api/
+  - https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage
+plans:
+  - id: ubiquiti-unifi-site-manager-free
+    name: UniFi Site Manager API (Free)
+    type: free
+    description: |
+      The UniFi Site Manager API is free for any user with a UI account that
+      manages a UniFi deployment. Keys are issued at unifi.ui.com/settings/api-keys.
+      Read-only at GA; write scope (adopt, configure) is being rolled out
+      through 2026.
+    entries:
+      - label: API access
+        name: api-access
+        type: included
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: ubiquiti-unifi-controller-free
+    name: UniFi Network Controller API (Free, bundled)
+    type: free
+    description: |
+      The local UniFi Network Controller API is bundled with every UniFi
+      Network controller — UDM, UDM Pro, UDR, Cloud Key, or self-hosted
+      software controller. No additional fee.
+    entries:
+      - label: API access
+        name: api-access
+        type: included
+        metric: controller
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: ubiquiti-uisp-free
+    name: UISP NMS and CRM APIs (Free, bundled)
+    type: free
+    description: |
+      The UISP NMS and CRM APIs are bundled with each UISP installation
+      (cloud-hosted or self-hosted). API tokens (NMS) and App Keys (CRM)
+      are issued in the UISP console at no additional cost.
+    entries:
+      - label: API access
+        name: api-access
+        type: included
+        metric: instance
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false

@@ -1,0 +1,71 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Ubiquiti
+providerId: ubiquiti
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Networking
+  - Rate Limiting
+description: |
+  Documented rate limits for Ubiquiti's UniFi Site Manager API. The local
+  UniFi Network Controller API, UISP NMS API, and UISP CRM API are
+  per-instance and do not publish global rate limits; they are constrained by
+  the underlying hardware/software resources of the controller or UISP
+  instance.
+sources:
+  - https://developer.ui.com/site-manager-api/
+  - https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+responseCodes:
+  throttled: 429
+algorithm: fixed-window
+limits:
+  - api: UniFi Site Manager API (GA)
+    scope: per API key
+    surfaces:
+      - GET /v1/hosts
+      - GET /v1/hosts/{id}
+      - GET /v1/sites
+      - GET /v1/devices
+    requests: 10000
+    timeFrame: minute
+    notes: |
+      Generally available endpoints under `/v1/`. Rate limit applies per
+      API key. Excess requests receive HTTP 429.
+  - api: UniFi Site Manager API (Early Access)
+    scope: per API key
+    surfaces:
+      - GET /ea/isp-metrics/{type}
+      - POST /ea/isp-metrics/{type}/query
+      - GET /ea/sd-wan-configs
+      - GET /ea/sd-wan-configs/{id}
+      - GET /ea/sd-wan-configs/{id}/status
+    requests: 100
+    timeFrame: minute
+    notes: |
+      Early Access endpoints under `/ea/`. Lower limit while in EA;
+      may change at GA. Excess requests receive HTTP 429.
+  - api: UniFi Network Controller API
+    scope: per controller
+    requests: null
+    timeFrame: null
+    notes: |
+      No documented global rate limit. Controllers may throttle abusive
+      clients; sustained polling against `stat/*` endpoints can impact
+      controller performance.
+  - api: UISP NMS API (v2.1)
+    scope: per instance / per token
+    requests: null
+    timeFrame: null
+    notes: |
+      No documented global rate limit. Per-instance API; throughput is
+      bounded by the UISP host hardware.
+  - api: UISP CRM API (v1.0)
+    scope: per instance / per app key
+    requests: null
+    timeFrame: null
+    notes: |
+      No documented global rate limit. Per-instance API; throughput is
+      bounded by the UISP host hardware.
