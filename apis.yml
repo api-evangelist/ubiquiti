@@ -23,12 +23,14 @@ apis:
     type: Documentation
   - url: openapi/ubiquiti-unifi-site-manager-api-openapi.yml
     type: OpenAPI
-  description: The UniFi Site Manager API is Ubiquiti's official cloud API at api.ui.com for programmatic access
-    to UniFi deployments across all sites linked to a UI account. Endpoints expose hosts (UniFi OS consoles),
+  description: >-
+    The UniFi Site Manager API is Ubiquiti's official cloud API at api.ui.com for programmatic access to
+    UniFi deployments across all sites linked to a UI account. Endpoints expose hosts (UniFi OS consoles),
     sites (UniFi Network applications), devices, ISP metrics (latency, packet loss, uptime, bandwidth), and
-    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated at unifi.ui.com/settings/api-keys.
-    Read-only at GA; write scope (adopt, configure) is being rolled out through 2026. GA rate limit is 10,000
-    requests per minute; Early Access endpoints under `/ea/` are limited to 100 requests per minute.
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated at
+    unifi.ui.com/settings/api-keys. Read-only at GA; write scope (adopt, configure) is being rolled out
+    through 2026. GA rate limit is 10,000 requests per minute; Early Access endpoints under `/ea/` are
+    limited to 100 requests per minute.
 - aid: ubiquiti:unifi-network-controller-api
   name: UniFi Network Controller API
   tags:
@@ -46,8 +48,9 @@ apis:
     type: SDK
   - url: https://github.com/ubiquiti-community/unifi-api
     type: Documentation
-  description: The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller
-    (UDM, UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with
+  description: >-
+    The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller (UDM,
+    UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with
     `/api/s/{site}/` on a standalone controller, or `/proxy/network/api/s/{site}/` on UniFi OS devices. It
     covers sites, devices, clients, stats (`stat/health`, `stat/sta`, `stat/device`), settings, wireless
     networks, firewall, port forwards, vouchers, hotspot, alerts, and events. Authentication is via
@@ -67,13 +70,14 @@ apis:
     type: Documentation
   - url: https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage
     type: Documentation
-  description: The UISP Network (NMS) API is the per-instance REST API for the network-management half of
-    UISP — Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are
-    served from each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`,
+  description: >-
+    The UISP Network (NMS) API is the per-instance REST API for the network-management half of UISP —
+    Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are served from
+    each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`,
     `/nms/api/v2.1/devices/{id}/detail`, sites, outages, alerts, statistics). Authentication uses an
     `x-auth-token` header carrying an API token generated in the UISP console; tokens can be issued in
-    read-only or read/write mode. A live Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on
-    every UISP installation.
+    read-only or read/write mode. A live Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on every
+    UISP installation.
 - aid: ubiquiti:uisp-crm-api
   name: UISP CRM API
   tags:
@@ -88,11 +92,12 @@ apis:
     type: Documentation
   - url: https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage
     type: Documentation
-  description: The UISP CRM API is the per-instance REST API for the customer-relationship-management half
-    of UISP, covering clients, services (subscriptions), invoices, payments, quotes, tickets, jobs, taxes,
-    and product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`.
-    Authentication uses an `X-Auth-App-Key` header carrying an App Key generated under
-    Settings → Security → App keys. The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
+  description: >-
+    The UISP CRM API is the per-instance REST API for the customer-relationship-management half of UISP,
+    covering clients, services (subscriptions), invoices, payments, quotes, tickets, jobs, taxes, and
+    product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`.
+    Authentication uses an `X-Auth-App-Key` header carrying an App Key generated under Settings → Security →
+    App keys. The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
 name: Ubiquiti
 tags:
 - Networking
@@ -210,8 +215,9 @@ common:
 created: '2026-05-25T00:00:00.000Z'
 modified: '2026-05-25'
 position: Consuming
-description: Ubiquiti Inc. (NYSE&#58; UI) is an American networking technology company that designs and sells
-  wireless and wired network products for enterprises, service providers, and consumers under the UniFi, UISP,
+description: >-
+  Ubiquiti Inc. (NYSE&#58; UI) is an American networking technology company that designs and sells wireless
+  and wired network products for enterprises, service providers, and consumers under the UniFi, UISP,
   AmpliFi, airMAX, airFiber, and EdgeMax brands. UniFi is a full-stack platform spanning WiFi, switching,
   routing, identity, surveillance (Protect), access control (Access), and VoIP (Talk), managed locally by the
   UniFi Network Controller and globally via the UniFi Site Manager cloud at unifi.ui.com. UISP is Ubiquiti's

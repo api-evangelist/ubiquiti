@@ -1,0 +1,2264 @@
+{
+  "item": [
+    {
+      "id": "a4a4a3e1-545e-4ab0-b611-bdc290310a64",
+      "name": "Hosts",
+      "description": {
+        "content": "UniFi OS consoles linked to the UI account",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e48f31a8-ec59-412d-a5ad-7ee32ca00e6e",
+          "name": "List Hosts",
+          "request": {
+            "name": "List Hosts",
+            "description": {
+              "content": "Retrieve a list of all hosts (UniFi OS consoles) associated with the UI account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbfd176a-4191-446a-8ba8-2b41a4acf224",
+              "name": "A page of hosts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3428,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"hardwareId\": \"string\",\n      \"type\": \"string\",\n      \"ipAddress\": \"string\",\n      \"owner\": true,\n      \"isBlocked\": true,\n      \"registrationTime\": \"1950-08-10T08:59:04.203Z\",\n      \"lastConnectionStateChange\": \"1989-03-20T18:42:10.284Z\",\n      \"latestBackupTime\": \"1986-04-11T18:33:51.628Z\",\n      \"reportedState\": {\n        \"key_0\": 1308.871402335574,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"userData\": {\n        \"key_0\": 8800,\n        \"key_1\": 5037,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"hardwareId\": \"string\",\n      \"type\": \"string\",\n      \"ipAddress\": \"string\",\n      \"owner\": false,\n      \"isBlocked\": true,\n      \"registrationTime\": \"1999-07-18T03:18:03.403Z\",\n      \"lastConnectionStateChange\": \"2005-07-05T12:58:32.622Z\",\n      \"latestBackupTime\": \"1977-09-07T17:13:07.960Z\",\n      \"reportedState\": {\n        \"key_0\": 7536.684263887666\n      },\n      \"userData\": {\n        \"key_0\": 236\n      }\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70e046fd-91a5-4ba7-9130-50060625fb9c",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08e334f5-8af2-4060-911a-21610a301cf0",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d1ed5ae-7a1c-49ef-974a-0b5c04151e73",
+          "name": "Get Host by ID",
+          "request": {
+            "name": "Get Host by ID",
+            "description": {
+              "content": "Retrieve detailed information about a specific host by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bed8f99e-5bd0-4f5b-a206-754471c73798",
+              "name": "Host detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 9359,\n  \"traceId\": \"string\",\n  \"data\": {\n    \"id\": \"string\",\n    \"hardwareId\": \"string\",\n    \"type\": \"string\",\n    \"ipAddress\": \"string\",\n    \"owner\": false,\n    \"isBlocked\": true,\n    \"registrationTime\": \"1962-03-13T23:05:22.335Z\",\n    \"lastConnectionStateChange\": \"1991-02-25T03:07:30.372Z\",\n    \"latestBackupTime\": \"1963-10-10T19:31:32.439Z\",\n    \"reportedState\": {\n      \"key_0\": true\n    },\n    \"userData\": {\n      \"key_0\": 3374.1540696502625,\n      \"key_1\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "531708b1-31cd-4eec-8853-c5f6b2deaebe",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81165548-0baa-4500-881f-586e028fcc44",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "434fe4d6-1b94-4916-9084-41a406e24dc4",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c49f4f90-7023-4b35-81a2-b23cc9c9fc5a",
+      "name": "Sites",
+      "description": {
+        "content": "UniFi Network application sites",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8bed26fb-8bf9-434d-bc73-a378dd1c0630",
+          "name": "List Sites",
+          "request": {
+            "name": "List Sites",
+            "description": {
+              "content": "Retrieve a list of all sites (UniFi Network application sites) associated with the UI account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0741ccf-b1e9-4856-b351-4e3c868b735c",
+              "name": "A page of sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 5557,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"siteId\": \"string\",\n      \"hostId\": \"string\",\n      \"meta\": {\n        \"desc\": \"string\",\n        \"name\": \"string\",\n        \"timezone\": \"string\",\n        \"gatewayMac\": \"string\"\n      },\n      \"statistics\": {\n        \"key_0\": false\n      },\n      \"permission\": \"string\",\n      \"isOwner\": true\n    },\n    {\n      \"siteId\": \"string\",\n      \"hostId\": \"string\",\n      \"meta\": {\n        \"desc\": \"string\",\n        \"name\": \"string\",\n        \"timezone\": \"string\",\n        \"gatewayMac\": \"string\"\n      },\n      \"statistics\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9527,\n        \"key_2\": 2663,\n        \"key_3\": 987.4375841878713\n      },\n      \"permission\": \"string\",\n      \"isOwner\": true\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a2608c2-108a-43b7-8b32-75749f427c6b",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76dc624c-41ac-4df9-bd45-53878de9968c",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ea10e634-d1e2-4e94-8fc9-3090199c3f4e",
+      "name": "Devices",
+      "description": {
+        "content": "UniFi devices managed by the account's hosts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b61543de-eaa1-468a-b236-6cc7ed0e3d30",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "Retrieve a list of UniFi devices managed by hosts where the UI account is the owner or a super admin.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hostIds[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostIds[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "time",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b76aca32-8be9-4239-a69a-92f0e2ae450c",
+              "name": "A page of devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3802,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"hostId\": \"string\",\n      \"hostName\": \"string\",\n      \"devices\": [\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"2006-03-05T09:59:57.073Z\",\n          \"startupTime\": \"2011-09-20T19:20:00.051Z\",\n          \"uidb\": {\n            \"key_0\": 7833\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"1968-03-15T20:20:20.623Z\",\n          \"startupTime\": \"1968-05-28T10:18:27.671Z\",\n          \"uidb\": {\n            \"key_0\": 3827.115563130192,\n            \"key_1\": false,\n            \"key_2\": 5280.031934340086\n          }\n        }\n      ]\n    },\n    {\n      \"hostId\": \"string\",\n      \"hostName\": \"string\",\n      \"devices\": [\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"1964-08-22T23:39:47.432Z\",\n          \"startupTime\": \"2008-02-22T03:24:16.404Z\",\n          \"uidb\": {\n            \"key_0\": 3398.2541217678695,\n            \"key_1\": false\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"2002-01-13T13:16:50.732Z\",\n          \"startupTime\": \"2000-12-23T21:04:59.873Z\",\n          \"uidb\": {\n            \"key_0\": 2037.5149086033218,\n            \"key_1\": 8751.24956802929,\n            \"key_2\": 9602,\n            \"key_3\": 5818\n          }\n        }\n      ]\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9ce2f01-ba99-492a-bf2a-ec5f992599ec",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c391a7f1-6b1c-449d-93e6-c1f882db009a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "90d9298f-1c99-45aa-8def-60e8d0d54d68",
+      "name": "ISP Metrics",
+      "description": {
+        "content": "WAN performance metrics (latency, packet loss, uptime, bandwidth)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "737e2bf4-b443-4e79-9617-03354711d75a",
+          "name": "Get ISP Metrics",
+          "request": {
+            "name": "Get ISP Metrics",
+            "description": {
+              "content": "Retrieve ISP metrics data for all sites linked to the UI account's API key.\n`type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN\nperformance data including latency, packet loss, uptime, and bandwidth.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "isp-metrics",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "beginTimestamp",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15d38e98-463f-4eb1-8b35-7fad41629549",
+              "name": "ISP metrics time-series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 8540,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"2019-09-16T22:16:02.401Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 3845.63282702411,\n              \"maxLatency\": 2995.221557275447,\n              \"packetLoss\": 581.2874494408271,\n              \"uptime\": 7274.773838400671,\n              \"download\": {\n                \"key_0\": false,\n                \"key_1\": 667.0549769857637\n              },\n              \"upload\": {\n                \"key_0\": \"string\",\n                \"key_1\": 6722.042280731702,\n                \"key_2\": 6433.827364811408\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"2020-04-04T11:36:06.624Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 41.52778668406021,\n              \"maxLatency\": 6133.423002631333,\n              \"packetLoss\": 2895.288485771502,\n              \"uptime\": 4987.155470325957,\n              \"download\": {\n                \"key_0\": 2045,\n                \"key_1\": false\n              },\n              \"upload\": {\n                \"key_0\": 1153\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1992-11-22T03:29:34.338Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 5287.509550681123,\n              \"maxLatency\": 6152.66096597123,\n              \"packetLoss\": 7629.870136387461,\n              \"uptime\": 5779.53281533886,\n              \"download\": {\n                \"key_0\": 1526.991547531138,\n                \"key_1\": 1828.0183708552488\n              },\n              \"upload\": {\n                \"key_0\": 4030.659018767613\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1989-10-06T11:41:16.249Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 4041.66364040507,\n              \"maxLatency\": 7391.072632928612,\n              \"packetLoss\": 839.5865607665776,\n              \"uptime\": 7513.7170951821745,\n              \"download\": {\n                \"key_0\": 1648,\n                \"key_1\": 857,\n                \"key_2\": \"string\"\n              },\n              \"upload\": {\n                \"key_0\": 4883.993017490098\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74d85232-be8a-4dd8-b719-4e6a078df493",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e102d8c-b17c-4991-9220-cb2ba67cc277",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f079f6db-b01a-4cf3-8fa5-cc1791abbf8d",
+          "name": "Query ISP Metrics",
+          "request": {
+            "name": "Query ISP Metrics",
+            "description": {
+              "content": "Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "isp-metrics",
+                ":type",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0732420a-39dd-4b8e-b866-c7bfd8783b94",
+              "name": "ISP metrics time-series for the requested sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 8540,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"2019-09-16T22:16:02.401Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 3845.63282702411,\n              \"maxLatency\": 2995.221557275447,\n              \"packetLoss\": 581.2874494408271,\n              \"uptime\": 7274.773838400671,\n              \"download\": {\n                \"key_0\": false,\n                \"key_1\": 667.0549769857637\n              },\n              \"upload\": {\n                \"key_0\": \"string\",\n                \"key_1\": 6722.042280731702,\n                \"key_2\": 6433.827364811408\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"2020-04-04T11:36:06.624Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 41.52778668406021,\n              \"maxLatency\": 6133.423002631333,\n              \"packetLoss\": 2895.288485771502,\n              \"uptime\": 4987.155470325957,\n              \"download\": {\n                \"key_0\": 2045,\n                \"key_1\": false\n              },\n              \"upload\": {\n                \"key_0\": 1153\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1992-11-22T03:29:34.338Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 5287.509550681123,\n              \"maxLatency\": 6152.66096597123,\n              \"packetLoss\": 7629.870136387461,\n              \"uptime\": 5779.53281533886,\n              \"download\": {\n                \"key_0\": 1526.991547531138,\n                \"key_1\": 1828.0183708552488\n              },\n              \"upload\": {\n                \"key_0\": 4030.659018767613\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1989-10-06T11:41:16.249Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 4041.66364040507,\n              \"maxLatency\": 7391.072632928612,\n              \"packetLoss\": 839.5865607665776,\n              \"uptime\": 7513.7170951821745,\n              \"download\": {\n                \"key_0\": 1648,\n                \"key_1\": 857,\n                \"key_2\": \"string\"\n              },\n              \"upload\": {\n                \"key_0\": 4883.993017490098\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02be580f-0f00-419d-a8fb-3081db9b4342",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23163e56-4dc2-4289-9bb5-a9f00b21d343",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "14a14ea0-92a8-46b3-8d87-4430d837fe40",
+      "name": "SD-WAN",
+      "description": {
+        "content": "SD-WAN configurations and deployment status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55d88185-729f-4471-acb6-f903d8b7d671",
+          "name": "List SD-WAN Configs",
+          "request": {
+            "name": "List SD-WAN Configs",
+            "description": {
+              "content": "Retrieve a list of all SD-WAN configurations associated with the UI account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "sd-wan-configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "187a7288-b486-4443-8de4-1ae8e67bffda",
+              "name": "A list of SD-WAN configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 6814,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"settings\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3448.804842767872,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"settings\": {\n        \"key_0\": true,\n        \"key_1\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1b57d4b-9d47-4424-9301-945f433a660c",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "244efc11-39b8-45f4-bf25-38900b0fa700",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bd3af2e-c9f9-412e-829a-3ad6af1cd36d",
+          "name": "Get SD-WAN Config by ID",
+          "request": {
+            "name": "Get SD-WAN Config by ID",
+            "description": {
+              "content": "Retrieve detailed information about a specific SD-WAN configuration by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "sd-wan-configs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d5fccd2-c062-4a23-82c3-59773bedd6c8",
+              "name": "SD-WAN configuration detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 4205,\n  \"traceId\": \"string\",\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"variant\": \"string\",\n    \"settings\": {\n      \"key_0\": 9820.129951650724,\n      \"key_1\": 1615.1301804428076,\n      \"key_2\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abb80d7a-4b4e-4c80-951c-65c1c83d3760",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1de31406-44da-4818-a777-4200185338b1",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "587f60d0-c189-4c43-82d6-18b2b4d9accd",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1cc88c1-8ab0-477b-96dc-478429aef24d",
+          "name": "Get SD-WAN Config Status",
+          "request": {
+            "name": "Get SD-WAN Config Status",
+            "description": {
+              "content": "Retrieve the status of a specific SD-WAN configuration, including deployment progress, errors, and associated hubs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "sd-wan-configs",
+                ":id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e286fdb-a2f7-47f2-b632-78cb7222c8c7",
+              "name": "SD-WAN configuration deployment status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 6113,\n  \"traceId\": \"string\",\n  \"data\": {\n    \"id\": \"string\",\n    \"state\": \"string\",\n    \"hubs\": [\n      {\n        \"key_0\": 3348,\n        \"key_1\": true,\n        \"key_2\": 9037\n      },\n      {\n        \"key_0\": 959\n      }\n    ],\n    \"errors\": [\n      {\n        \"key_0\": 7853,\n        \"key_1\": \"string\"\n      },\n      {\n        \"key_0\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0dd16ed-348b-40a9-ba53-9d09fa7689d1",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7471a264-5477-4c8d-8a2d-344522efd6e7",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8a96e6a-0ce4-40d1-a768-e37a60fb2296",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "sd-wan-configs",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "9149",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3387,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ui.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9a01130b-9e8c-4341-bd40-e490268e4b39",
+    "name": "UniFi Site Manager API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site\nvisibility into a UI account's UniFi deployments — hosts (UniFi OS consoles),\nsites (UniFi Network applications), devices, ISP performance metrics, and\nSD-WAN configurations. Authentication uses an `X-API-KEY` header generated\nat https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;\nwrite scope (adopt, configure) is being rolled out through 2026. GA rate\nlimit is 10,000 requests per minute; Early Access endpoints under `/ea/`\nare limited to 100 requests per minute.\n\n\nContact Support:\n Name: Ubiquiti",
+      "type": "text/plain"
+    }
+  }
+}

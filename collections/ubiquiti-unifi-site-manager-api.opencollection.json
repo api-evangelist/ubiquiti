@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UniFi Site Manager API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/v1/hosts",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all hosts (UniFi OS consoles) associated with the UI account."
+        },
+        {
+          "info": {
+            "name": "Get Host by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/v1/hosts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific host by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/v1/sites",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all sites (UniFi Network application sites) associated with the UI account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/v1/devices",
+            "params": [
+              {
+                "name": "hostIds[]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of UniFi devices managed by hosts where the UI account is the owner or a super admin."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ISP Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ISP Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/isp-metrics/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beginTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve ISP metrics data for all sites linked to the UI account's API key.\n`type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN\nperformance data including latency, packet loss, uptime, and bandwidth.\n"
+        },
+        {
+          "info": {
+            "name": "Query ISP Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ui.com/ea/isp-metrics/:type/query",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SD-WAN",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SD-WAN Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs"
+          },
+          "docs": "Retrieve a list of all SD-WAN configurations associated with the UI account."
+        },
+        {
+          "info": {
+            "name": "Get SD-WAN Config by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific SD-WAN configuration by ID."
+        },
+        {
+          "info": {
+            "name": "Get SD-WAN Config Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a specific SD-WAN configuration, including deployment progress, errors, and associated hubs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
