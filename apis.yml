@@ -45,7 +45,7 @@ apis:
   - url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
     type: Documentation
   - url: https://github.com/Art-of-WiFi/UniFi-API-client
-    type: SDK
+    type: SDKs
   - url: https://github.com/ubiquiti-community/unifi-api
     type: Documentation
   description: >-
@@ -138,7 +138,7 @@ common:
 - type: Portal
   url: https://amplifi.com
   name: AmpliFi
-- type: SignUp
+- type: Signup
   url: https://account.ui.com
   name: UI Account
 - type: Authentication
@@ -153,7 +153,7 @@ common:
   url: https://status.ui.com
 - type: Blog
   url: https://www.ui.com/blog
-- type: Forum
+- type: Forums
   url: https://community.ui.com
   name: Ubiquiti Community
 - type: Support
@@ -170,22 +170,22 @@ common:
 - type: GitHubOrganization
   url: https://github.com/ubiquiti-community
   name: Ubiquiti Community GitHub Org
-- type: SDK
+- type: SDKs
   url: https://github.com/Art-of-WiFi/UniFi-API-client
   name: Art-of-WiFi UniFi PHP API client
-- type: SDK
+- type: SDKs
   url: https://github.com/ubiquiti-community/go-unifi
   name: go-unifi (Go SDK)
-- type: SDK
+- type: SDKs
   url: https://github.com/ubiquiti-community/py-unifi
   name: py-unifi (Python SDK)
-- type: SDK
+- type: SDKs
   url: https://github.com/DiegoMax/uisp
   name: UISP CRM TypeScript library
-- type: Tool
+- type: Tools
   url: https://github.com/ubiquiti-community/terraform-provider-unifi
   name: Terraform provider for UniFi
-- type: Tool
+- type: Tools
   url: https://github.com/ubiquiti-community/external-dns-unifi-webhook
   name: External-DNS Webhook for UniFi DNS
 - type: Plans
