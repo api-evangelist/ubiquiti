@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ubiquiti-unifi-site-manager-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  description: API key generated at https://unifi.ui.com/settings/api-keys
+  sources:
+  - openapi/ubiquiti-unifi-site-manager-api-openapi.yml
