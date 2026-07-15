@@ -1,0 +1,112 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/ubiquiti-unifi-site-manager-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 9
+  by_action_class:
+    connected: 8
+    acting: 1
+  by_consequence:
+    read: 8
+    write: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /v1/hosts
+  method: get
+  operationId: listHosts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/hosts/{id}
+  method: get
+  operationId: getHostById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sites
+  method: get
+  operationId: listSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/devices
+  method: get
+  operationId: listDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ea/isp-metrics/{type}
+  method: get
+  operationId: getIspMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ea/isp-metrics/{type}/query
+  method: post
+  operationId: queryIspMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /ea/sd-wan-configs
+  method: get
+  operationId: listSdwanConfigs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ea/sd-wan-configs/{id}
+  method: get
+  operationId: getSdwanConfigById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ea/sd-wan-configs/{id}/status
+  method: get
+  operationId: getSdwanConfigStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
