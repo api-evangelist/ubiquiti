@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: UniFi Site Manager Devices SD-WAN API
+  version: 1.0.0
+  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
+
+    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
+
+    sites (UniFi Network applications), devices, ISP performance metrics, and
+
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
+
+    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
+
+    write scope (adopt, configure) is being rolled out through 2026. GA rate
+
+    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
+
+    are limited to 100 requests per minute.
+
+    '
+  contact:
+    name: Ubiquiti
+    url: https://developer.ui.com/site-manager-api/
+  termsOfService: https://www.ui.com/legal/termsofservice/
+  license:
+    name: Ubiquiti Terms of Service
+    url: https://www.ui.com/legal/termsofservice/
+servers:
+- url: https://api.ui.com
+  description: UniFi Site Manager production endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: SD-WAN
+  description: SD-WAN configurations and deployment status
+paths:
+  /ea/sd-wan-configs:
+    get:
+      tags:
+      - SD-WAN
+      summary: List SD-WAN Configs
+      description: Retrieve a list of all SD-WAN configurations associated with the UI account.
+      operationId: listSdwanConfigs
+      responses:
+        '200':
+          description: A list of SD-WAN configurations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SdwanConfigListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /ea/sd-wan-configs/{id}:
+    get:
+      tags:
+      - SD-WAN
+      summary: Get SD-WAN Config by ID
+      description: Retrieve detailed information about a specific SD-WAN configuration by ID.
+      operationId: getSdwanConfigById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SD-WAN configuration detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SdwanConfigResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /ea/sd-wan-configs/{id}/status:
+    get:
+      tags:
+      - SD-WAN
+      summary: Get SD-WAN Config Status
+      description: Retrieve the status of a specific SD-WAN configuration, including deployment progress, errors, and associated hubs.
+      operationId: getSdwanConfigStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SD-WAN configuration deployment status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SdwanConfigStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    SdwanConfig:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        variant:
+          type: string
+        settings:
+          type: object
+          additionalProperties: true
+    SdwanConfigStatusResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              id:
+                type: string
+              state:
+                type: string
+                description: e.g. APPLIED, PENDING, FAILED
+              hubs:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+              errors:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    SdwanConfigResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/SdwanConfig'
+    SdwanConfigListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/SdwanConfig'
+  responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: API key generated at https://unifi.ui.com/settings/api-keys

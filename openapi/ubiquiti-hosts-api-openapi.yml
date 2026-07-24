@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: UniFi Site Manager Devices Hosts API
+  version: 1.0.0
+  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
+
+    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
+
+    sites (UniFi Network applications), devices, ISP performance metrics, and
+
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
+
+    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
+
+    write scope (adopt, configure) is being rolled out through 2026. GA rate
+
+    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
+
+    are limited to 100 requests per minute.
+
+    '
+  contact:
+    name: Ubiquiti
+    url: https://developer.ui.com/site-manager-api/
+  termsOfService: https://www.ui.com/legal/termsofservice/
+  license:
+    name: Ubiquiti Terms of Service
+    url: https://www.ui.com/legal/termsofservice/
+servers:
+- url: https://api.ui.com
+  description: UniFi Site Manager production endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Hosts
+  description: UniFi OS consoles linked to the UI account
+paths:
+  /v1/hosts:
+    get:
+      tags:
+      - Hosts
+      summary: List Hosts
+      description: Retrieve a list of all hosts (UniFi OS consoles) associated with the UI account.
+      operationId: listHosts
+      parameters:
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 25
+          maximum: 200
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A page of hosts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /v1/hosts/{id}:
+    get:
+      tags:
+      - Hosts
+      summary: Get Host by ID
+      description: Retrieve detailed information about a specific host by ID.
+      operationId: getHostById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Host detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    HostResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Host'
+    HostListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Host'
+          nextToken:
+            type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    Host:
+      type: object
+      properties:
+        id:
+          type: string
+        hardwareId:
+          type: string
+        type:
+          type: string
+          description: e.g. console, network-server, mobile-router
+        ipAddress:
+          type: string
+        owner:
+          type: boolean
+        isBlocked:
+          type: boolean
+        registrationTime:
+          type: string
+          format: date-time
+        lastConnectionStateChange:
+          type: string
+          format: date-time
+        latestBackupTime:
+          type: string
+          format: date-time
+        reportedState:
+          type: object
+          additionalProperties: true
+        userData:
+          type: object
+          additionalProperties: true
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: API key generated at https://unifi.ui.com/settings/api-keys

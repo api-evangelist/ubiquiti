@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: UniFi Site Manager Devices API
+  version: 1.0.0
+  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
+
+    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
+
+    sites (UniFi Network applications), devices, ISP performance metrics, and
+
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
+
+    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
+
+    write scope (adopt, configure) is being rolled out through 2026. GA rate
+
+    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
+
+    are limited to 100 requests per minute.
+
+    '
+  contact:
+    name: Ubiquiti
+    url: https://developer.ui.com/site-manager-api/
+  termsOfService: https://www.ui.com/legal/termsofservice/
+  license:
+    name: Ubiquiti Terms of Service
+    url: https://www.ui.com/legal/termsofservice/
+servers:
+- url: https://api.ui.com
+  description: UniFi Site Manager production endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Devices
+  description: UniFi devices managed by the account's hosts
+paths:
+  /v1/devices:
+    get:
+      tags:
+      - Devices
+      summary: List Devices
+      description: Retrieve a list of UniFi devices managed by hosts where the UI account is the owner or a super admin.
+      operationId: listDevices
+      parameters:
+      - name: hostIds[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+      - name: time
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 25
+          maximum: 200
+      - name: nextToken
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A page of devices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    DeviceListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                hostId:
+                  type: string
+                hostName:
+                  type: string
+                devices:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Device'
+          nextToken:
+            type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+        mac:
+          type: string
+        name:
+          type: string
+        model:
+          type: string
+        shortname:
+          type: string
+        ip:
+          type: string
+        productLine:
+          type: string
+        status:
+          type: string
+        version:
+          type: string
+        firmwareStatus:
+          type: string
+        updateAvailable:
+          type: string
+        adoptionTime:
+          type: string
+          format: date-time
+        startupTime:
+          type: string
+          format: date-time
+        uidb:
+          type: object
+          additionalProperties: true
+  responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: API key generated at https://unifi.ui.com/settings/api-keys

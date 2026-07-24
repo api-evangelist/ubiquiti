@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: UniFi Site Manager Devices ISP Metrics API
+  version: 1.0.0
+  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
+
+    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
+
+    sites (UniFi Network applications), devices, ISP performance metrics, and
+
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
+
+    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
+
+    write scope (adopt, configure) is being rolled out through 2026. GA rate
+
+    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
+
+    are limited to 100 requests per minute.
+
+    '
+  contact:
+    name: Ubiquiti
+    url: https://developer.ui.com/site-manager-api/
+  termsOfService: https://www.ui.com/legal/termsofservice/
+  license:
+    name: Ubiquiti Terms of Service
+    url: https://www.ui.com/legal/termsofservice/
+servers:
+- url: https://api.ui.com
+  description: UniFi Site Manager production endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: ISP Metrics
+  description: WAN performance metrics (latency, packet loss, uptime, bandwidth)
+paths:
+  /ea/isp-metrics/{type}:
+    get:
+      tags:
+      - ISP Metrics
+      summary: Get ISP Metrics
+      description: 'Retrieve ISP metrics data for all sites linked to the UI account''s API key.
+
+        `type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN
+
+        performance data including latency, packet loss, uptime, and bandwidth.
+
+        '
+      operationId: getIspMetrics
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 5m
+          - 1h
+      - name: beginTimestamp
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: endTimestamp
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: duration
+        in: query
+        schema:
+          type: string
+          description: ISO 8601 duration
+      responses:
+        '200':
+          description: ISP metrics time-series
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IspMetricsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /ea/isp-metrics/{type}/query:
+    post:
+      tags:
+      - ISP Metrics
+      summary: Query ISP Metrics
+      description: Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window.
+      operationId: queryIspMetrics
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 5m
+          - 1h
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IspMetricsQuery'
+      responses:
+        '200':
+          description: ISP metrics time-series for the requested sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IspMetricsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    IspMetricsResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                metricType:
+                  type: string
+                periods:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      metricTime:
+                        type: string
+                        format: date-time
+                      data:
+                        type: object
+                        properties:
+                          wan:
+                            type: object
+                            properties:
+                              avgLatency:
+                                type: number
+                              maxLatency:
+                                type: number
+                              packetLoss:
+                                type: number
+                              uptime:
+                                type: number
+                              download:
+                                type: object
+                                additionalProperties: true
+                              upload:
+                                type: object
+                                additionalProperties: true
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    IspMetricsQuery:
+      type: object
+      properties:
+        sites:
+          type: array
+          items:
+            type: object
+            properties:
+              hostId:
+                type: string
+              siteId:
+                type: string
+              beginTimestamp:
+                type: string
+                format: date-time
+              endTimestamp:
+                type: string
+                format: date-time
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: API key generated at https://unifi.ui.com/settings/api-keys
