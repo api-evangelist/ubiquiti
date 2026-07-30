@@ -1,36 +1,6 @@
 aid: ubiquiti
 url: https://raw.githubusercontent.com/api-evangelist/ubiquiti/refs/heads/main/apis.yml
 apis:
-- aid: ubiquiti:unifi-site-manager-api
-  name: UniFi Site Manager API
-  tags:
-  - Networking
-  - UniFi
-  - Site Manager
-  - Cloud
-  humanURL: https://developer.ui.com/site-manager-api/
-  baseURL: https://api.ui.com/v1
-  properties:
-  - url: https://developer.ui.com/site-manager-api/
-    type: Documentation
-  - url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
-    type: GettingStarted
-  - url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
-    type: Documentation
-  - url: https://developer.ui.com/site-manager-api/versioncontrol
-    type: Versioning
-  - url: https://developer.ui.com/site-manager-api/responseformat/
-    type: Documentation
-  - url: openapi/ubiquiti-unifi-site-manager-api-openapi.yml
-    type: OpenAPI
-  description: >-
-    The UniFi Site Manager API is Ubiquiti's official cloud API at api.ui.com for programmatic access to
-    UniFi deployments across all sites linked to a UI account. Endpoints expose hosts (UniFi OS consoles),
-    sites (UniFi Network applications), devices, ISP metrics (latency, packet loss, uptime, bandwidth), and
-    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated at
-    unifi.ui.com/settings/api-keys. Read-only at GA; write scope (adopt, configure) is being rolled out
-    through 2026. GA rate limit is 10,000 requests per minute; Early Access endpoints under `/ea/` are
-    limited to 100 requests per minute.
 - aid: ubiquiti:unifi-network-controller-api
   name: UniFi Network Controller API
   tags:
@@ -42,7 +12,8 @@ apis:
   properties:
   - url: https://ubntwiki.com/products/software/unifi-controller/api
     type: Documentation
-  - url: https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
     type: Documentation
   - url: https://github.com/Art-of-WiFi/UniFi-API-client
     type: SDKs
@@ -50,13 +21,12 @@ apis:
     type: Documentation
   description: >-
     The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller (UDM,
-    UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with
-    `/api/s/{site}/` on a standalone controller, or `/proxy/network/api/s/{site}/` on UniFi OS devices. It
-    covers sites, devices, clients, stats (`stat/health`, `stat/sta`, `stat/device`), settings, wireless
-    networks, firewall, port forwards, vouchers, hotspot, alerts, and events. Authentication is via
-    `/api/auth/login` on UniFi OS. Responses follow the `{ "meta": { "rc": "ok" }, "data": [...] }` shape.
-    Not formally documented by Ubiquiti; reverse-engineered conventions captured in community wikis and
-    third-party SDKs.
+    UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with `/api/s/{site}/`
+    on a standalone controller, or `/proxy/network/api/s/{site}/` on UniFi OS devices. It covers sites,
+    devices, clients, stats (`stat/health`, `stat/sta`, `stat/device`), settings, wireless networks, firewall,
+    port forwards, vouchers, hotspot, alerts, and events. Authentication is via `/api/auth/login` on UniFi
+    OS. Responses follow the `{ "meta": { "rc": "ok" }, "data": [...] }` shape. Not formally documented
+    by Ubiquiti; reverse-engineered conventions captured in community wikis and third-party SDKs.
 - aid: ubiquiti:uisp-nms-api
   name: UISP Network (NMS) API
   tags:
@@ -72,12 +42,11 @@ apis:
     type: Documentation
   description: >-
     The UISP Network (NMS) API is the per-instance REST API for the network-management half of UISP —
-    Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are served from
-    each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`,
-    `/nms/api/v2.1/devices/{id}/detail`, sites, outages, alerts, statistics). Authentication uses an
-    `x-auth-token` header carrying an API token generated in the UISP console; tokens can be issued in
-    read-only or read/write mode. A live Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on every
-    UISP installation.
+    Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are served
+    from each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`, `/nms/api/v2.1/devices/{id}/detail`,
+    sites, outages, alerts, statistics). Authentication uses an `x-auth-token` header carrying an API
+    token generated in the UISP console; tokens can be issued in read-only or read/write mode. A live
+    Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on every UISP installation.
 - aid: ubiquiti:uisp-crm-api
   name: UISP CRM API
   tags:
@@ -95,9 +64,114 @@ apis:
   description: >-
     The UISP CRM API is the per-instance REST API for the customer-relationship-management half of UISP,
     covering clients, services (subscriptions), invoices, payments, quotes, tickets, jobs, taxes, and
-    product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`.
-    Authentication uses an `X-Auth-App-Key` header carrying an App Key generated under Settings → Security →
-    App keys. The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
+    product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`. Authentication
+    uses an `X-Auth-App-Key` header carrying an App Key generated under Settings → Security → App keys.
+    The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
+- aid: ubiquiti:ubiquiti-devices-api
+  name: Ubiquiti Devices API
+  description: UniFi devices managed by the account's hosts
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/ubiquiti-devices-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/
+  - type: GettingStarted
+    url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+  - type: Documentation
+    url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - type: Versioning
+    url: https://developer.ui.com/site-manager-api/versioncontrol
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/responseformat/
+- aid: ubiquiti:ubiquiti-hosts-api
+  name: Ubiquiti Hosts API
+  description: UniFi OS consoles linked to the UI account
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  tags:
+  - Hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/ubiquiti-hosts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/
+  - type: GettingStarted
+    url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+  - type: Documentation
+    url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - type: Versioning
+    url: https://developer.ui.com/site-manager-api/versioncontrol
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/responseformat/
+- aid: ubiquiti:ubiquiti-isp-metrics-api
+  name: Ubiquiti ISP Metrics API
+  description: WAN performance metrics (latency, packet loss, uptime, bandwidth)
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  tags:
+  - ISP Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/ubiquiti-isp-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/
+  - type: GettingStarted
+    url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+  - type: Documentation
+    url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - type: Versioning
+    url: https://developer.ui.com/site-manager-api/versioncontrol
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/responseformat/
+- aid: ubiquiti:ubiquiti-sd-wan-api
+  name: Ubiquiti SD-WAN API
+  description: SD-WAN configurations and deployment status
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  tags:
+  - SD-WAN
+  properties:
+  - type: OpenAPI
+    url: openapi/ubiquiti-sd-wan-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/
+  - type: GettingStarted
+    url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+  - type: Documentation
+    url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - type: Versioning
+    url: https://developer.ui.com/site-manager-api/versioncontrol
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/responseformat/
+- aid: ubiquiti:ubiquiti-sites-api
+  name: Ubiquiti Sites API
+  description: UniFi Network application sites
+  humanURL: https://developer.ui.com/site-manager-api/
+  baseURL: https://api.ui.com/v1
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/ubiquiti-sites-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/
+  - type: GettingStarted
+    url: https://developer.ui.com/site-manager/v1.0.0/gettingstarted
+  - type: Documentation
+    url: >-
+      https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API
+  - type: Versioning
+    url: https://developer.ui.com/site-manager-api/versioncontrol
+  - type: Documentation
+    url: https://developer.ui.com/site-manager-api/responseformat/
 name: Ubiquiti
 tags:
 - Networking
@@ -112,7 +186,20 @@ tags:
 - UISP
 - AmpliFi
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ubiquiti.png
 access: 3rd-Party
 common:
 - type: AgenticAccess
