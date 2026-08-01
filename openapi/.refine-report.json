@@ -1,0 +1,22 @@
+{
+  "provider": "ubiquiti",
+  "sources": [
+    "ubiquiti-devices-api-openapi.yml",
+    "ubiquiti-hosts-api-openapi.yml",
+    "ubiquiti-isp-metrics-api-openapi.yml",
+    "ubiquiti-sd-wan-api-openapi.yml",
+    "ubiquiti-sites-api-openapi.yml"
+  ],
+  "outputs": [
+    "ubiquiti-devices-api-openapi.yml",
+    "ubiquiti-hosts-api-openapi.yml",
+    "ubiquiti-isp-metrics-api-openapi.yml",
+    "ubiquiti-sd-wan-api-openapi.yml",
+    "ubiquiti-sites-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

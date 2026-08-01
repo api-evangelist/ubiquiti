@@ -1,0 +1,464 @@
+openapi: 3.1.0
+info:
+  title: UniFi Site Manager API
+  version: 1.0.0
+  description: |
+    Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
+    visibility into a UI account's UniFi deployments — hosts (UniFi OS consoles),
+    sites (UniFi Network applications), devices, ISP performance metrics, and
+    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
+    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
+    write scope (adopt, configure) is being rolled out through 2026. GA rate
+    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
+    are limited to 100 requests per minute.
+  contact:
+    name: Ubiquiti
+    url: https://developer.ui.com/site-manager-api/
+  termsOfService: https://www.ui.com/legal/termsofservice/
+  license:
+    name: Ubiquiti Terms of Service
+    url: https://www.ui.com/legal/termsofservice/
+servers:
+- url: https://api.ui.com
+  description: UniFi Site Manager production endpoint
+security:
+- ApiKeyAuth: []
+tags:
+- name: Hosts
+  description: UniFi OS consoles linked to the UI account
+- name: Sites
+  description: UniFi Network application sites
+- name: Devices
+  description: UniFi devices managed by the account's hosts
+- name: ISP Metrics
+  description: WAN performance metrics (latency, packet loss, uptime, bandwidth)
+- name: SD-WAN
+  description: SD-WAN configurations and deployment status
+paths:
+  /v1/hosts:
+    get:
+      tags: [Hosts]
+      summary: List Hosts
+      description: Retrieve a list of all hosts (UniFi OS consoles) associated with the UI account.
+      operationId: listHosts
+      parameters:
+      - name: pageSize
+        in: query
+        schema: { type: integer, default: 25, maximum: 200 }
+      - name: nextToken
+        in: query
+        schema: { type: string }
+      responses:
+        '200':
+          description: A page of hosts
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/HostListResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /v1/hosts/{id}:
+    get:
+      tags: [Hosts]
+      summary: Get Host by ID
+      description: Retrieve detailed information about a specific host by ID.
+      operationId: getHostById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      responses:
+        '200':
+          description: Host detail
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/HostResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /v1/sites:
+    get:
+      tags: [Sites]
+      summary: List Sites
+      description: Retrieve a list of all sites (UniFi Network application sites) associated with the UI account.
+      operationId: listSites
+      parameters:
+      - name: pageSize
+        in: query
+        schema: { type: integer, default: 25, maximum: 200 }
+      - name: nextToken
+        in: query
+        schema: { type: string }
+      responses:
+        '200':
+          description: A page of sites
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SiteListResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /v1/devices:
+    get:
+      tags: [Devices]
+      summary: List Devices
+      description: Retrieve a list of UniFi devices managed by hosts where the UI account is the owner or a super admin.
+      operationId: listDevices
+      parameters:
+      - name: hostIds[]
+        in: query
+        schema:
+          type: array
+          items: { type: string }
+        explode: true
+      - name: time
+        in: query
+        schema: { type: string, format: date-time }
+      - name: pageSize
+        in: query
+        schema: { type: integer, default: 25, maximum: 200 }
+      - name: nextToken
+        in: query
+        schema: { type: string }
+      responses:
+        '200':
+          description: A page of devices
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/DeviceListResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /ea/isp-metrics/{type}:
+    get:
+      tags: [ISP Metrics]
+      summary: Get ISP Metrics
+      description: |
+        Retrieve ISP metrics data for all sites linked to the UI account's API key.
+        `type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN
+        performance data including latency, packet loss, uptime, and bandwidth.
+      operationId: getIspMetrics
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [5m, 1h]
+      - name: beginTimestamp
+        in: query
+        schema: { type: string, format: date-time }
+      - name: endTimestamp
+        in: query
+        schema: { type: string, format: date-time }
+      - name: duration
+        in: query
+        schema: { type: string, description: ISO 8601 duration }
+      responses:
+        '200':
+          description: ISP metrics time-series
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/IspMetricsResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /ea/isp-metrics/{type}/query:
+    post:
+      tags: [ISP Metrics]
+      summary: Query ISP Metrics
+      description: Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window.
+      operationId: queryIspMetrics
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [5m, 1h]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/IspMetricsQuery' }
+      responses:
+        '200':
+          description: ISP metrics time-series for the requested sites
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/IspMetricsResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /ea/sd-wan-configs:
+    get:
+      tags: [SD-WAN]
+      summary: List SD-WAN Configs
+      description: Retrieve a list of all SD-WAN configurations associated with the UI account.
+      operationId: listSdwanConfigs
+      responses:
+        '200':
+          description: A list of SD-WAN configurations
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SdwanConfigListResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /ea/sd-wan-configs/{id}:
+    get:
+      tags: [SD-WAN]
+      summary: Get SD-WAN Config by ID
+      description: Retrieve detailed information about a specific SD-WAN configuration by ID.
+      operationId: getSdwanConfigById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      responses:
+        '200':
+          description: SD-WAN configuration detail
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SdwanConfigResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /ea/sd-wan-configs/{id}/status:
+    get:
+      tags: [SD-WAN]
+      summary: Get SD-WAN Config Status
+      description: Retrieve the status of a specific SD-WAN configuration, including deployment progress, errors, and associated hubs.
+      operationId: getSdwanConfigStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+      responses:
+        '200':
+          description: SD-WAN configuration deployment status
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SdwanConfigStatusResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: API key generated at https://unifi.ui.com/settings/api-keys
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema: { type: integer, description: Seconds to wait before retrying }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode: { type: integer }
+        traceId: { type: string }
+      required: [httpStatusCode]
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message: { type: string }
+    Host:
+      type: object
+      properties:
+        id: { type: string }
+        hardwareId: { type: string }
+        type: { type: string, description: 'e.g. console, network-server, mobile-router' }
+        ipAddress: { type: string }
+        owner: { type: boolean }
+        isBlocked: { type: boolean }
+        registrationTime: { type: string, format: date-time }
+        lastConnectionStateChange: { type: string, format: date-time }
+        latestBackupTime: { type: string, format: date-time }
+        reportedState:
+          type: object
+          additionalProperties: true
+        userData:
+          type: object
+          additionalProperties: true
+    HostListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items: { $ref: '#/components/schemas/Host' }
+          nextToken: { type: string }
+    HostResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data: { $ref: '#/components/schemas/Host' }
+    Site:
+      type: object
+      properties:
+        siteId: { type: string }
+        hostId: { type: string }
+        meta:
+          type: object
+          properties:
+            desc: { type: string }
+            name: { type: string }
+            timezone: { type: string }
+            gatewayMac: { type: string }
+        statistics:
+          type: object
+          additionalProperties: true
+        permission: { type: string, description: 'owner, admin, super-admin, read-only' }
+        isOwner: { type: boolean }
+    SiteListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items: { $ref: '#/components/schemas/Site' }
+          nextToken: { type: string }
+    Device:
+      type: object
+      properties:
+        id: { type: string }
+        mac: { type: string }
+        name: { type: string }
+        model: { type: string }
+        shortname: { type: string }
+        ip: { type: string }
+        productLine: { type: string }
+        status: { type: string }
+        version: { type: string }
+        firmwareStatus: { type: string }
+        updateAvailable: { type: string }
+        adoptionTime: { type: string, format: date-time }
+        startupTime: { type: string, format: date-time }
+        uidb:
+          type: object
+          additionalProperties: true
+    DeviceListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                hostId: { type: string }
+                hostName: { type: string }
+                devices:
+                  type: array
+                  items: { $ref: '#/components/schemas/Device' }
+          nextToken: { type: string }
+    IspMetricsQuery:
+      type: object
+      properties:
+        sites:
+          type: array
+          items:
+            type: object
+            properties:
+              hostId: { type: string }
+              siteId: { type: string }
+              beginTimestamp: { type: string, format: date-time }
+              endTimestamp: { type: string, format: date-time }
+    IspMetricsResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                metricType: { type: string }
+                periods:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      metricTime: { type: string, format: date-time }
+                      data:
+                        type: object
+                        properties:
+                          wan:
+                            type: object
+                            properties:
+                              avgLatency: { type: number }
+                              maxLatency: { type: number }
+                              packetLoss: { type: number }
+                              uptime: { type: number }
+                              download:
+                                type: object
+                                additionalProperties: true
+                              upload:
+                                type: object
+                                additionalProperties: true
+    SdwanConfig:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        type: { type: string }
+        variant: { type: string }
+        settings:
+          type: object
+          additionalProperties: true
+    SdwanConfigListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items: { $ref: '#/components/schemas/SdwanConfig' }
+    SdwanConfigResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data: { $ref: '#/components/schemas/SdwanConfig' }
+    SdwanConfigStatusResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              id: { type: string }
+              state: { type: string, description: 'e.g. APPLIED, PENDING, FAILED' }
+              hubs:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+              errors:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
