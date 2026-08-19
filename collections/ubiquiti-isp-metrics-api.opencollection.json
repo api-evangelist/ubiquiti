@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UniFi Site Manager Devices ISP Metrics API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ISP Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ISP Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/isp-metrics/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beginTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTimestamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve ISP metrics data for all sites linked to the UI account's API key.\n`type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN\nperformance data including latency, packet loss, uptime, and bandwidth.\n"
+        },
+        {
+          "info": {
+            "name": "Query ISP Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ui.com/ea/isp-metrics/:type/query",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

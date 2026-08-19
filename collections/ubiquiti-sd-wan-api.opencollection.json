@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UniFi Site Manager Devices SD-WAN API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SD-WAN",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SD-WAN Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs"
+          },
+          "docs": "Retrieve a list of all SD-WAN configurations associated with the UI account."
+        },
+        {
+          "info": {
+            "name": "Get SD-WAN Config by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific SD-WAN configuration by ID."
+        },
+        {
+          "info": {
+            "name": "Get SD-WAN Config Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ui.com/ea/sd-wan-configs/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a specific SD-WAN configuration, including deployment progress, errors, and associated hubs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

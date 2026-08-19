@@ -1,0 +1,312 @@
+{
+  "item": [
+    {
+      "id": "e0cd455c-15a2-40eb-8e00-81db3cc13afd",
+      "name": "Devices",
+      "description": {
+        "content": "UniFi devices managed by the account's hosts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc528059-1320-4310-bf9e-e00228ab0023",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "Retrieve a list of UniFi devices managed by hosts where the UI account is the owner or a super admin.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hostIds[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostIds[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "time",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8aadf9cd-c931-4c7a-95e0-291c9386aac3",
+              "name": "A page of devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 1668,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"hostId\": \"string\",\n      \"hostName\": \"string\",\n      \"devices\": [\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"2010-04-06T03:12:32.153Z\",\n          \"startupTime\": \"1962-07-13T13:22:10.466Z\",\n          \"uidb\": {\n            \"key_0\": 655,\n            \"key_1\": true,\n            \"key_2\": 5061.441435680618\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"1981-04-14T20:49:40.236Z\",\n          \"startupTime\": \"1989-01-22T20:09:44.409Z\",\n          \"uidb\": {\n            \"key_0\": 4814\n          }\n        }\n      ]\n    },\n    {\n      \"hostId\": \"string\",\n      \"hostName\": \"string\",\n      \"devices\": [\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"1949-03-04T01:18:51.079Z\",\n          \"startupTime\": \"2001-08-17T01:56:46.433Z\",\n          \"uidb\": {\n            \"key_0\": 5594,\n            \"key_1\": 9383.832611800879,\n            \"key_2\": false\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"mac\": \"string\",\n          \"name\": \"string\",\n          \"model\": \"string\",\n          \"shortname\": \"string\",\n          \"ip\": \"string\",\n          \"productLine\": \"string\",\n          \"status\": \"string\",\n          \"version\": \"string\",\n          \"firmwareStatus\": \"string\",\n          \"updateAvailable\": \"string\",\n          \"adoptionTime\": \"1995-07-01T17:20:31.852Z\",\n          \"startupTime\": \"1957-06-11T09:29:07.518Z\",\n          \"uidb\": {\n            \"key_0\": 8928.85581062086,\n            \"key_1\": \"string\",\n            \"key_2\": 2496\n          }\n        }\n      ]\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b40df419-859a-4fe7-bdbb-129bf1454ced",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3992,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12a5b61d-3a19-48bd-af49-2b4046c8de38",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hostIds[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "6300",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3992,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ui.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b3f1405-fa9d-4fa2-9f9e-50e2b08c8151",
+    "name": "UniFi Site Manager Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site\nvisibility into a UI account's UniFi deployments — hosts (UniFi OS consoles),\nsites (UniFi Network applications), devices, ISP performance metrics, and\nSD-WAN configurations. Authentication uses an `X-API-KEY` header generated\nat https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;\nwrite scope (adopt, configure) is being rolled out through 2026. GA rate\nlimit is 10,000 requests per minute; Early Access endpoints under `/ea/`\nare limited to 100 requests per minute.\n\n\nContact Support:\n Name: Ubiquiti",
+      "type": "text/plain"
+    }
+  }
+}

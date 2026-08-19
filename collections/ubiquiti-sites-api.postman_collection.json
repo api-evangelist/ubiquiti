@@ -1,0 +1,261 @@
+{
+  "item": [
+    {
+      "id": "73f3f544-3576-4254-a992-71352549d8b8",
+      "name": "Sites",
+      "description": {
+        "content": "UniFi Network application sites",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc86a93f-c9e9-4b77-94bd-f9bd8323a8d3",
+          "name": "List Sites",
+          "request": {
+            "name": "List Sites",
+            "description": {
+              "content": "Retrieve a list of all sites (UniFi Network application sites) associated with the UI account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19979347-555a-4a9c-aa47-420267ab9d66",
+              "name": "A page of sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 3251,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"siteId\": \"string\",\n      \"hostId\": \"string\",\n      \"meta\": {\n        \"desc\": \"string\",\n        \"name\": \"string\",\n        \"timezone\": \"string\",\n        \"gatewayMac\": \"string\"\n      },\n      \"statistics\": {\n        \"key_0\": \"string\"\n      },\n      \"permission\": \"string\",\n      \"isOwner\": true\n    },\n    {\n      \"siteId\": \"string\",\n      \"hostId\": \"string\",\n      \"meta\": {\n        \"desc\": \"string\",\n        \"name\": \"string\",\n        \"timezone\": \"string\",\n        \"gatewayMac\": \"string\"\n      },\n      \"statistics\": {\n        \"key_0\": \"string\",\n        \"key_1\": true\n      },\n      \"permission\": \"string\",\n      \"isOwner\": true\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77cdbde8-c9ba-439f-8de9-fb4f02a1642e",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 8492,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5312d34-b0d6-4559-b8c2-7141ba97a2a4",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "2645",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 8492,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ui.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9da53064-749c-46ad-9dc6-bd3266f6b7c2",
+    "name": "UniFi Site Manager Devices Sites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site\nvisibility into a UI account's UniFi deployments — hosts (UniFi OS consoles),\nsites (UniFi Network applications), devices, ISP performance metrics, and\nSD-WAN configurations. Authentication uses an `X-API-KEY` header generated\nat https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;\nwrite scope (adopt, configure) is being rolled out through 2026. GA rate\nlimit is 10,000 requests per minute; Early Access endpoints under `/ea/`\nare limited to 100 requests per minute.\n\n\nContact Support:\n Name: Ubiquiti",
+      "type": "text/plain"
+    }
+  }
+}

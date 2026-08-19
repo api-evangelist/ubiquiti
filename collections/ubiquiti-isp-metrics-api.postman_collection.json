@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "2b75fbaf-d53b-4116-be80-29070a4986ad",
+      "name": "ISP Metrics",
+      "description": {
+        "content": "WAN performance metrics (latency, packet loss, uptime, bandwidth)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "addd05bc-7674-4b79-8b57-18121d71d50e",
+          "name": "Get ISP Metrics",
+          "request": {
+            "name": "Get ISP Metrics",
+            "description": {
+              "content": "Retrieve ISP metrics data for all sites linked to the UI account's API key.\n`type` selects the aggregation window (e.g. `5m`, `1h`). Returns WAN\nperformance data including latency, packet loss, uptime, and bandwidth.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "isp-metrics",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "beginTimestamp",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTimestamp",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e00b719-3d65-4cae-8f55-e7c6c9529b37",
+              "name": "ISP metrics time-series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 7686,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1989-02-23T00:26:58.875Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 2160.920144530887,\n              \"maxLatency\": 5592.2018280001075,\n              \"packetLoss\": 7755.473166897235,\n              \"uptime\": 3201.9412366667198,\n              \"download\": {\n                \"key_0\": 7372,\n                \"key_1\": 356.2008958036078\n              },\n              \"upload\": {\n                \"key_0\": 5476,\n                \"key_1\": false\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1967-09-01T11:11:15.973Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 6321.481905999895,\n              \"maxLatency\": 8908.439263108687,\n              \"packetLoss\": 3687.9682174167606,\n              \"uptime\": 4445.602172707619,\n              \"download\": {\n                \"key_0\": 48\n              },\n              \"upload\": {\n                \"key_0\": 7552,\n                \"key_1\": \"string\"\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1996-01-07T08:32:40.584Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 7656.738960747447,\n              \"maxLatency\": 1420.230109344771,\n              \"packetLoss\": 6804.142028646603,\n              \"uptime\": 4475.922241053335,\n              \"download\": {\n                \"key_0\": 4319.844394114733\n              },\n              \"upload\": {\n                \"key_0\": true\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1980-07-27T03:14:48.219Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 6532.715922297929,\n              \"maxLatency\": 1970.3151591802791,\n              \"packetLoss\": 7987.276276223788,\n              \"uptime\": 7133.8462095673085,\n              \"download\": {\n                \"key_0\": false,\n                \"key_1\": false\n              },\n              \"upload\": {\n                \"key_0\": 4733.750580873374\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0de5306a-a32c-4a1d-bca4-6af59558a9c6",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 5824,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b2f0cd4-77e5-48f2-a47c-be1c84ad587b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "beginTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTimestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "duration",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "909",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 5824,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6978dec-30ff-4d36-8f26-c43e1d7bc00f",
+          "name": "Query ISP Metrics",
+          "request": {
+            "name": "Query ISP Metrics",
+            "description": {
+              "content": "Retrieve ISP metrics data filtered by an explicit set of site IDs and a time window.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ea",
+                "isp-metrics",
+                ":type",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f024f401-d3fa-45e0-9546-1e62e09a1c9b",
+              "name": "ISP metrics time-series for the requested sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 7686,\n  \"traceId\": \"string\",\n  \"data\": [\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1989-02-23T00:26:58.875Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 2160.920144530887,\n              \"maxLatency\": 5592.2018280001075,\n              \"packetLoss\": 7755.473166897235,\n              \"uptime\": 3201.9412366667198,\n              \"download\": {\n                \"key_0\": 7372,\n                \"key_1\": 356.2008958036078\n              },\n              \"upload\": {\n                \"key_0\": 5476,\n                \"key_1\": false\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1967-09-01T11:11:15.973Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 6321.481905999895,\n              \"maxLatency\": 8908.439263108687,\n              \"packetLoss\": 3687.9682174167606,\n              \"uptime\": 4445.602172707619,\n              \"download\": {\n                \"key_0\": 48\n              },\n              \"upload\": {\n                \"key_0\": 7552,\n                \"key_1\": \"string\"\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"metricType\": \"string\",\n      \"periods\": [\n        {\n          \"metricTime\": \"1996-01-07T08:32:40.584Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 7656.738960747447,\n              \"maxLatency\": 1420.230109344771,\n              \"packetLoss\": 6804.142028646603,\n              \"uptime\": 4475.922241053335,\n              \"download\": {\n                \"key_0\": 4319.844394114733\n              },\n              \"upload\": {\n                \"key_0\": true\n              }\n            }\n          }\n        },\n        {\n          \"metricTime\": \"1980-07-27T03:14:48.219Z\",\n          \"data\": {\n            \"wan\": {\n              \"avgLatency\": 6532.715922297929,\n              \"maxLatency\": 1970.3151591802791,\n              \"packetLoss\": 7987.276276223788,\n              \"uptime\": 7133.8462095673085,\n              \"download\": {\n                \"key_0\": false,\n                \"key_1\": false\n              },\n              \"upload\": {\n                \"key_0\": 4733.750580873374\n              }\n            }\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92798432-d599-4bc6-924c-025ed8b40628",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 5824,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51e7ba09-c42b-4ea9-84a4-54f7591638ba",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ea",
+                    "isp-metrics",
+                    ":type",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sites\": [\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"hostId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"beginTimestamp\": \"<dateTime>\",\n      \"endTimestamp\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Retry-After",
+                  "value": "909",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatusCode\": 5824,\n  \"traceId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ui.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "56c7b2f2-a22b-4147-b2c7-a76c87f16134",
+    "name": "UniFi Site Manager Devices ISP Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site\nvisibility into a UI account's UniFi deployments — hosts (UniFi OS consoles),\nsites (UniFi Network applications), devices, ISP performance metrics, and\nSD-WAN configurations. Authentication uses an `X-API-KEY` header generated\nat https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;\nwrite scope (adopt, configure) is being rolled out through 2026. GA rate\nlimit is 10,000 requests per minute; Early Access endpoints under `/ea/`\nare limited to 100 requests per minute.\n\n\nContact Support:\n Name: Ubiquiti",
+      "type": "text/plain"
+    }
+  }
+}
