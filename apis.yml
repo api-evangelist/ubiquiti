@@ -175,6 +175,18 @@ apis:
 name: Ubiquiti
 tags:
 - Networking
+- Wi-Fi
+- Switching
+- Routing
+- Surveillance
+- Access Control
+- ISP
+- WISP
+- UniFi
+- UISP
+- AmpliFi
+tags_raw:
+- Networking
 - WiFi
 - Switching
 - Routing
