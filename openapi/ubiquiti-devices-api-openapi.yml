@@ -1,24 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: UniFi Site Manager Devices API
   version: 1.0.0
-  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
-
-    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
-
-    sites (UniFi Network applications), devices, ISP performance metrics, and
-
-    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
-
-    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
-
-    write scope (adopt, configure) is being rolled out through 2026. GA rate
-
-    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
-
-    are limited to 100 requests per minute.
-
-    '
+  description: Official Ubiquiti UniFi Site Manager API.
   contact:
     name: Ubiquiti
     url: https://developer.ui.com/site-manager-api/
@@ -98,6 +82,13 @@ components:
                     $ref: '#/components/schemas/Device'
           nextToken:
             type: string
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
     Envelope:
       type: object
       properties:
@@ -107,13 +98,6 @@ components:
           type: string
       required:
       - httpStatusCode
-    Error:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          message:
-            type: string
     Device:
       type: object
       properties:
@@ -149,6 +133,12 @@ components:
           type: object
           additionalProperties: true
   responses:
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     RateLimited:
       description: Rate limit exceeded
       headers:
@@ -156,12 +146,6 @@ components:
           schema:
             type: integer
             description: Seconds to wait before retrying
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key
       content:
         application/json:
           schema:

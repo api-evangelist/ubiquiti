@@ -1,24 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: UniFi Site Manager Devices Sites API
+  title: UniFi Site Manager Sites API
   version: 1.0.0
-  description: 'Official Ubiquiti UniFi Site Manager API. Provides programmatic, multi-site
-
-    visibility into a UI account''s UniFi deployments — hosts (UniFi OS consoles),
-
-    sites (UniFi Network applications), devices, ISP performance metrics, and
-
-    SD-WAN configurations. Authentication uses an `X-API-KEY` header generated
-
-    at https://unifi.ui.com/settings/api-keys. The API key is read-only at GA;
-
-    write scope (adopt, configure) is being rolled out through 2026. GA rate
-
-    limit is 10,000 requests per minute; Early Access endpoints under `/ea/`
-
-    are limited to 100 requests per minute.
-
-    '
+  description: Official Ubiquiti UniFi Site Manager API.
   contact:
     name: Ubiquiti
     url: https://developer.ui.com/site-manager-api/
@@ -65,41 +49,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        Retry-After:
-          schema:
-            type: integer
-            description: Seconds to wait before retrying
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
-    Error:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          message:
-            type: string
     Site:
       type: object
       properties:
@@ -137,6 +87,40 @@ components:
               $ref: '#/components/schemas/Site'
           nextToken:
             type: string
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

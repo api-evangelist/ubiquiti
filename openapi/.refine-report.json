@@ -1,11 +1,7 @@
 {
   "provider": "ubiquiti",
   "sources": [
-    "ubiquiti-devices-api-openapi.yml",
-    "ubiquiti-hosts-api-openapi.yml",
-    "ubiquiti-isp-metrics-api-openapi.yml",
-    "ubiquiti-sd-wan-api-openapi.yml",
-    "ubiquiti-sites-api-openapi.yml"
+    "_original/ubiquiti-unifi-site-manager-api-openapi.yml"
   ],
   "outputs": [
     "ubiquiti-devices-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ubiquiti-unifi-site-manager-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ubiquiti-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ubiquiti-hosts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ubiquiti-isp-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ubiquiti-sd-wan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ubiquiti-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
