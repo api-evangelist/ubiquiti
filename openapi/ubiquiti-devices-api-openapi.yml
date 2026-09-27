@@ -61,27 +61,25 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    DeviceListResponse:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              type: object
-              properties:
-                hostId:
-                  type: string
-                hostName:
-                  type: string
-                devices:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Device'
-          nextToken:
-            type: string
     Error:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -132,24 +130,26 @@ components:
         uidb:
           type: object
           additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        Retry-After:
-          schema:
-            type: integer
-            description: Seconds to wait before retrying
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    DeviceListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                hostId:
+                  type: string
+                hostName:
+                  type: string
+                devices:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Device'
+          nextToken:
+            type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

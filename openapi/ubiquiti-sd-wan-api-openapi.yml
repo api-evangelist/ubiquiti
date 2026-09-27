@@ -91,15 +91,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
-    SdwanConfigListResponse:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/SdwanConfig'
     SdwanConfig:
       type: object
       properties:
@@ -128,15 +119,6 @@ components:
         properties:
           message:
             type: string
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
     SdwanConfigStatusResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -160,7 +142,36 @@ components:
                 items:
                   type: object
                   additionalProperties: true
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    SdwanConfigListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/SdwanConfig'
   responses:
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+            description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
       content:
@@ -169,17 +180,6 @@ components:
             $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        Retry-After:
-          schema:
-            type: integer
-            description: Seconds to wait before retrying
       content:
         application/json:
           schema:
