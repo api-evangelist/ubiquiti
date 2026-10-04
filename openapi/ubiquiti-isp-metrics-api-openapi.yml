@@ -100,6 +100,40 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
+    IspMetricsQuery:
+      type: object
+      properties:
+        sites:
+          type: array
+          items:
+            type: object
+            properties:
+              hostId:
+                type: string
+              siteId:
+                type: string
+              beginTimestamp:
+                type: string
+                format: date-time
+              endTimestamp:
+                type: string
+                format: date-time
     IspMetricsResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -140,40 +174,6 @@ components:
                               upload:
                                 type: object
                                 additionalProperties: true
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
-    IspMetricsQuery:
-      type: object
-      properties:
-        sites:
-          type: array
-          items:
-            type: object
-            properties:
-              hostId:
-                type: string
-              siteId:
-                type: string
-              beginTimestamp:
-                type: string
-                format: date-time
-              endTimestamp:
-                type: string
-                format: date-time
-    Error:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          message:
-            type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key
