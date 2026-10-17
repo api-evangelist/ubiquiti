@@ -91,22 +91,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
-    SdwanConfigListResponse:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/SdwanConfig'
-    Error:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          message:
-            type: string
     SdwanConfig:
       type: object
       properties:
@@ -121,6 +105,13 @@ components:
         settings:
           type: object
           additionalProperties: true
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
     SdwanConfigResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -128,15 +119,15 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/SdwanConfig'
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
+    SdwanConfigListResponse:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/SdwanConfig'
     SdwanConfigStatusResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -160,13 +151,16 @@ components:
                 items:
                   type: object
                   additionalProperties: true
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API key
       content:
@@ -180,6 +174,12 @@ components:
           schema:
             type: integer
             description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

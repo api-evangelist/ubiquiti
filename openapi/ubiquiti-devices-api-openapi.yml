@@ -103,15 +103,6 @@ components:
         properties:
           message:
             type: string
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
     DeviceListResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -132,6 +123,15 @@ components:
                     $ref: '#/components/schemas/Device'
           nextToken:
             type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
   responses:
     Unauthorized:
       description: Missing or invalid API key

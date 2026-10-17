@@ -107,15 +107,6 @@ components:
         properties:
           message:
             type: string
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
     IspMetricsQuery:
       type: object
       properties:
@@ -174,6 +165,15 @@ components:
                               upload:
                                 type: object
                                 additionalProperties: true
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
   responses:
     Unauthorized:
       description: Missing or invalid API key

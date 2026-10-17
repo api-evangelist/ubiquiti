@@ -90,15 +90,6 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Host'
-    Envelope:
-      type: object
-      properties:
-        httpStatusCode:
-          type: integer
-        traceId:
-          type: string
-      required:
-      - httpStatusCode
     HostListResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
@@ -110,6 +101,15 @@ components:
               $ref: '#/components/schemas/Host'
           nextToken:
             type: string
+    Envelope:
+      type: object
+      properties:
+        httpStatusCode:
+          type: integer
+        traceId:
+          type: string
+      required:
+      - httpStatusCode
     Host:
       type: object
       properties:
@@ -142,12 +142,6 @@ components:
           type: object
           additionalProperties: true
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API key
       content:
@@ -161,6 +155,12 @@ components:
           schema:
             type: integer
             description: Seconds to wait before retrying
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

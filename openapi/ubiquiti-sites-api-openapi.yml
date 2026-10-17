@@ -50,6 +50,13 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    Error:
+      allOf:
+      - $ref: '#/components/schemas/Envelope'
+      - type: object
+        properties:
+          message:
+            type: string
     Site:
       type: object
       properties:
@@ -76,13 +83,6 @@ components:
           description: owner, admin, super-admin, read-only
         isOwner:
           type: boolean
-    Error:
-      allOf:
-      - $ref: '#/components/schemas/Envelope'
-      - type: object
-        properties:
-          message:
-            type: string
     SiteListResponse:
       allOf:
       - $ref: '#/components/schemas/Envelope'
