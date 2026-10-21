@@ -16,9 +16,36 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
+- partner_name: ONVIF
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.onvif.org/about/member-list/
+  category: video surveillance standards body membership
+  contract_reference:
+    register: ONVIF member list (onvif.org/about/member-list)
+    standard: ONVIF
+    spec_file: null
+    role: onvif-member
+    registered_name: Ubiquiti Inc.
+    register_id: onvif-company-381161
+    matched_domain: ui.com
+    matched_by: domain
+    detected_by: sweep-onvif-video-analytics.py
+    detected: '2026-10-21'
+    signal_note: 'participation only: an ONVIF member with no conformant product listed'
+  detected_by: sweep-onvif-video-analytics.py
+  first_seen: '2026-10-21'
 generated: '2026-10-18'
 method: searched
 source:
 - slack/integrations/slack-integration-edges.yml
 checked:
 - slack/integrations/slack-integration-edges.yml
+- https://www.onvif.org/about/member-list/
+- https://www.onvif.org/conformant-products/
+- https://www.onvif.org/member-tools/wp-admin/admin-ajax.php?action=get_companies_list
+- https://www.onvif.org/member-tools?action=product_search

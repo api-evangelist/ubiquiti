@@ -16,3 +16,26 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: ubiquiti-onvif
+  label: ONVIF
+  partner_name: ONVIF
+  category: video surveillance standards body membership
+  type: register
+  channel: standard-directory
+  evidence: https://www.onvif.org/about/member-list/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ONVIF member list (onvif.org/about/member-list)
+    standard: ONVIF
+    spec_file: null
+    role: onvif-member
+    registered_name: Ubiquiti Inc.
+    register_id: onvif-company-381161
+    matched_domain: ui.com
+    matched_by: domain
+    detected_by: sweep-onvif-video-analytics.py
+    detected: '2026-10-21'
+    signal_note: 'participation only: an ONVIF member with no conformant product listed'
+  status: not-a-workflow
+  arazzo: null
