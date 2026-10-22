@@ -39,3 +39,102 @@
     signal_note: 'participation only: an ONVIF member with no conformant product listed'
   status: not-a-workflow
   arazzo: null
+- slug: ubiquiti-wi-fi-alliance-certified-products
+  label: Wi-Fi Alliance certified products
+  partner_name: Wi-Fi Alliance certified products
+  category: Wi-Fi certification
+  type: register
+  channel: standard-directory
+  evidence: https://www.wi-fi.org/product-finder
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Wi-Fi Alliance product finder (wi-fi.org/product-finder; prf.cert.wi-fi.org public JSON / CSV)
+    standard: Wi-Fi CERTIFIED
+    spec_file: null
+    role: wi-fi-certified-product
+    registered_name: Ubiquiti Inc.
+    register_id: WFA131610
+    matched_domain: null
+    matched_by: register-name
+    register_name_note: register-name 'ubiquiti' = ubiquiti; no wikidata P856
+    certified_products:
+    - product: Routers
+      lapsed: false
+      newest_certification: '2024-07-01'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Televisions & Set Top Boxes
+      lapsed: false
+      newest_certification: '2024-10-01'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    products_sample:
+    - UniFi AP
+    - UniFi AP-Professional
+    - UniFi Access Point AC In-Wall
+    - UniFi Access Point AC Lite
+    - UniFi Access Point AC Mesh
+    - UniFi Access Point AC Mesh PRO
+    - UniFi Access Point AC PRO
+    - UniFi Display Cast Lite
+    signal_note: certified_products = one entry per Wi-Fi Alliance product category, never per product, variant
+      or CID; generations are context. Wi-Fi CERTIFIED does not expire and the finder marks nothing withdrawn, so
+      lapsed is false
+    detected_by: sweep-wireless-connectivity-certification.py
+    detected: '2026-10-22'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
+- slug: ubiquiti-us-epa-energy-star
+  label: US EPA ENERGY STAR
+  partner_name: US EPA ENERGY STAR
+  category: ENERGY STAR product certification
+  type: register
+  channel: standard-directory
+  evidence: https://data.energystar.gov/d/8wj2-sec8
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ENERGY STAR Model Index, all currently certified models (data.energystar.gov/resource/8wj2-sec8)
+    standard: ENERGY STAR (US EPA product specifications)
+    spec_file: null
+    role: energy-star-partner
+    registered_name: Ubiquiti Inc.
+    register_id: https://data.energystar.gov/d/8wj2-sec8
+    matched_domain: null
+    matched_by: register-name
+    certified_products:
+    - product: Electric Vehicle Supply Equipment
+      product_type: Electric Vehicle Supply Equipment
+      lapsed: false
+      brands:
+      - Ubiquiti Inc.
+      first_certified: '2024-08-26'
+      connected: true
+      connected_protocols:
+      - Other LAN (Local Area Network)
+      - Wi-Fi or Gigabit Ethernet
+    connected_product_types:
+    - Electric Vehicle Supply Equipment
+    signal_note: 'certified_products = ONE entry per ENERGY STAR product category with a currently certified model
+      (the Model Index lists current certifications only, so lapsed is False; delisted models drop out); connected:
+      true where the category''s dataset flags connected / network capability for this partner''s models (Smart
+      Thermostats and Connected lighting are connected by definition). Brands are context; model counts are never
+      counted.'
+    detected_by: sweep-energy-star-certified-products.py
+    detected: '2026-10-22'
+    register_name_note: register-name 'ubiquiti' = ubiquiti; no wikidata P856
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
