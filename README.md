@@ -1,4 +1,4 @@
-# Ubiquiti (ubiquiti)
+# Ubiquiti
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,159 +64,131 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Ubiquiti Inc. (NYSE&#58; UI) is an American networking technology company that designs and sells wireless and wired network products for enterprises, service providers, and consumers under the UniFi, UISP, AmpliFi, airMAX, airFiber, and EdgeMax brands. UniFi is a full-stack platform spanning WiFi, switching, routing, identity, surveillance (Protect), access control (Access), and VoIP (Talk), managed locally by the UniFi Network Controller and globally via the UniFi Site Manager cloud at unifi.ui.com. UISP is Ubiquiti's ISP platform combining a Network Management System (NMS) and a Customer Relationship Management (CRM) module for wireless and fiber service providers. The official UniFi Site Manager API exposes hosts, sites, devices, ISP metrics, and SD-WAN configurations at api.ui.com/v1 with X-API-KEY authentication; UISP NMS and CRM APIs are hosted on each customer instance under /nms/api/v2.1/ and /crm/api/v1.0/ respectively.
+Ubiquiti Inc. (NYSE: UI) is an American networking technology company that designs and sells wireless and wired network products for enterprises, service providers, and consumers under the UniFi, UISP, AmpliFi, airMAX, airFiber, and EdgeMax brands. UniFi is a full-stack platform spanning WiFi, switching, routing, identity, surveillance (Protect), access control (Access), and VoIP (Talk), managed locally by the UniFi Network Controller and globally via the UniFi Site Manager cloud at unifi.ui.com. UISP is Ubiquiti's ISP platform combining a Network Management System (NMS) and a Customer Relationship Management (CRM) module for wireless and fiber service providers. The official UniFi Site Manager API exposes hosts, sites, devices, ISP metrics, and SD-WAN configurations at api.ui.com/v1 with X-API-KEY authentication; UISP NMS and CRM APIs are hosted on each customer instance under /nms/api/v2.1/ and /crm/api/v1.0/ respectively.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ubiquiti/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ubiquiti/refs/heads/main/apis.yml)
+**Areas:** Networking · Wi-Fi · Switching · Routing · Surveillance · Access Control · ISP · WISP · UniFi · UISP · AmpliFi
 
-## Scope
+## Ubiquiti on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Ubiquiti is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ubiquiti/](https://apis.io/providers/ubiquiti/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Networking
-- WiFi
-- Switching
-- Routing
-- Surveillance
-- Access Control
-- ISP
-- WISP
-- UniFi
-- UISP
-- AmpliFi
+- [UniFi Network Controller API](https://apis.io/apis/ubiquiti/unifi-network-controller-api/) — The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller (UDM, UDM Pro, UDR, Cloud Key, self-hosted controller,…
+- [UISP Network (NMS) API](https://apis.io/apis/ubiquiti/uisp-nms-api/) — The UISP Network (NMS) API is the per-instance REST API for the network-management half of UISP — Ubiquiti's purpose-built ISP platform for wireless and…
+- [UISP CRM API](https://apis.io/apis/ubiquiti/uisp-crm-api/) — The UISP CRM API is the per-instance REST API for the customer-relationship-management half of UISP, covering clients, services (subscriptions), invoices,…
+- [Ubiquiti Devices API](https://apis.io/apis/ubiquiti/ubiquiti-devices-api/) — UniFi devices managed by the account's hosts
+- [Ubiquiti Hosts API](https://apis.io/apis/ubiquiti/ubiquiti-hosts-api/) — UniFi OS consoles linked to the UI account
+- [Ubiquiti ISP Metrics API](https://apis.io/apis/ubiquiti/ubiquiti-isp-metrics-api/) — WAN performance metrics (latency, packet loss, uptime, bandwidth)
+- [Ubiquiti SD-WAN API](https://apis.io/apis/ubiquiti/ubiquiti-sd-wan-api/) — SD-WAN configurations and deployment status
+- [Ubiquiti Sites API](https://apis.io/apis/ubiquiti/ubiquiti-sites-api/) — UniFi Network application sites
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25T00:00:00.000Z
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### UniFi Site Manager API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The UniFi Site Manager API is Ubiquiti's official cloud API at api.ui.com for programmatic access to UniFi deployments across all sites linked to a UI account. Endpoints expose hosts (UniFi OS consoles), sites (UniFi Network applications), devices, ISP metrics (latency, packet loss, uptime, bandwidth), and SD-WAN configurations. Authentication uses an `X-API-KEY` header generated at unifi.ui.com/settings/api-keys. Read-only at GA; write scope (adopt, configure) is being rolled out through 2026. GA rate limit is 10,000 requests per minute; Early Access endpoints under `/ea/` are limited to 100 requests per minute.
+- [Ubiquiti Agentic Access](https://apis.io/agentic-access/ubiquiti/ubiquiti-agentic-access/)
 
-- **Human URL:** [https://developer.ui.com/site-manager-api/](https://developer.ui.com/site-manager-api/)
-- **Base URL:** `https://api.ui.com/v1`
+#### Collections (6)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Networking
-- UniFi
-- Site Manager
-- Cloud
+- [UniFi Site Manager Devices API](https://apis.io/collections/ubiquiti/open-ubiquiti-devices-api/)
+- [UniFi Site Manager Devices Hosts API](https://apis.io/collections/ubiquiti/open-ubiquiti-hosts-api/)
+- [UniFi Site Manager Devices ISP Metrics API](https://apis.io/collections/ubiquiti/open-ubiquiti-isp-metrics-api/)
+- [UniFi Site Manager Devices SD-WAN API](https://apis.io/collections/ubiquiti/open-ubiquiti-sd-wan-api/)
+- [UniFi Site Manager Devices Sites API](https://apis.io/collections/ubiquiti/open-ubiquiti-sites-api/)
+- [UniFi Site Manager API](https://apis.io/collections/ubiquiti/open-ubiquiti-unifi-site-manager-api/)
 
-#### Properties
+#### Security (3)
 
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ubiquiti Authentication](https://apis.io/security/ubiquiti/ubiquiti-authentication/)
+- [Ubiquiti Domain Security](https://apis.io/security/ubiquiti/ubiquiti-domain-security/)
+- [Ubiquiti Vulnerability Disclosure](https://apis.io/security/ubiquiti/ubiquiti-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ubiquiti Plans Pricing](https://apis.io/plans/ubiquiti/ubiquiti-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ubiquiti Rate Limits](https://apis.io/rate-limits/ubiquiti/ubiquiti-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.ui.com/)
 - [Documentation](https://developer.ui.com/site-manager-api/)
-- [Getting Started](https://developer.ui.com/site-manager/v1.0.0/gettingstarted)
-- [Documentation](https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API)
-- [Versioning](https://developer.ui.com/site-manager-api/versioncontrol)
-- [Documentation](https://developer.ui.com/site-manager-api/responseformat/)
-- [OpenAPI](openapi/ubiquiti-unifi-site-manager-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/ubiquiti-unifi-site-manager-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ubiquiti-unifi-site-manager-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### UniFi Network Controller API
-
-The UniFi Network Controller API is the local HTTP API exposed by every UniFi Network controller (UDM, UDM Pro, UDR, Cloud Key, self-hosted controller, UniFi OS consoles). Endpoints are prefixed with `/api/s/{site}/` on a standalone controller, or `/proxy/network/api/s/{site}/` on UniFi OS devices. It covers sites, devices, clients, stats (`stat/health`, `stat/sta`, `stat/device`), settings, wireless networks, firewall, port forwards, vouchers, hotspot, alerts, and events. Authentication is via `/api/auth/login` on UniFi OS. Responses follow the `{ "meta": { "rc": "ok" }, "data": [...] }` shape. Not formally documented by Ubiquiti; reverse-engineered conventions captured in community wikis and third-party SDKs.
-
-- **Human URL:** [https://ubntwiki.com/products/software/unifi-controller/api](https://ubntwiki.com/products/software/unifi-controller/api)
-
-#### Tags
-
-- Networking
-- UniFi
-- Controller
-- Local API
-
-#### Properties
-
-- [Documentation](https://ubntwiki.com/products/software/unifi-controller/api)
-- [Documentation](https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API)
-- [SDK](https://github.com/Art-of-WiFi/UniFi-API-client)
-- [Documentation](https://github.com/ubiquiti-community/unifi-api)
-- [Postman Collection](collections/ubiquiti-unifi-site-manager-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ubiquiti-unifi-site-manager-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### UISP Network (NMS) API
-
-The UISP Network (NMS) API is the per-instance REST API for the network-management half of UISP — Ubiquiti's purpose-built ISP platform for wireless and fiber service providers. Endpoints are served from each UISP instance under `/nms/api/v2.1/` (e.g. `/nms/api/v2.1/devices`, `/nms/api/v2.1/devices/{id}/detail`, sites, outages, alerts, statistics). Authentication uses an `x-auth-token` header carrying an API token generated in the UISP console; tokens can be issued in read-only or read/write mode. A live Swagger UI is hosted at `https://{your-host}/nms/api-docs/` on every UISP installation.
-
-- **Human URL:** [https://uisp.ui.com/nms/api-docs/](https://uisp.ui.com/nms/api-docs/)
-
-#### Tags
-
-- ISP
-- UISP
-- WISP
-- Network Management
-
-#### Properties
-
-- [Documentation](https://help.uisp.com/hc/en-us/sections/22589678457879-UISP-Network)
-- [Documentation](https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage)
-- [Postman Collection](collections/ubiquiti-unifi-site-manager-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ubiquiti-unifi-site-manager-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### UISP CRM API
-
-The UISP CRM API is the per-instance REST API for the customer-relationship-management half of UISP, covering clients, services (subscriptions), invoices, payments, quotes, tickets, jobs, taxes, and product/service plans. Endpoints are served from each UISP instance under `/crm/api/v1.0/`. Authentication uses an `X-Auth-App-Key` header carrying an App Key generated under Settings → Security → App keys. The full reference is mirrored on Apiary at unmscrm.docs.apiary.io.
-
-- **Human URL:** [https://unmscrm.docs.apiary.io/](https://unmscrm.docs.apiary.io/)
-
-#### Tags
-
-- ISP
-- UISP
-- WISP
-- CRM
-- Billing
-
-#### Properties
-
-- [Documentation](https://unmscrm.docs.apiary.io/)
-- [Documentation](https://help.uisp.com/hc/en-us/articles/22590956856087-UISP-CRM-API-Usage)
-- [Postman Collection](collections/ubiquiti-unifi-site-manager-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ubiquiti-unifi-site-manager-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://www.ui.com)
-- [Portal](https://developer.ui.com)
-- [Documentation](https://developer.ui.com/site-manager-api/)
-- [Getting Started](https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API)
-- [Documentation](https://ubntwiki.com/products/software/unifi-controller/api)
-- [Documentation](https://help.uisp.com/)
-- [Documentation](https://unmscrm.docs.apiary.io/)
-- [Portal](https://amplifi.com)
-- [Sign Up](https://account.ui.com)
-- [Authentication](https://unifi.ui.com/settings/api-keys)
-- [Rate Limits](https://developer.ui.com/site-manager-api/)
-- [Versioning](https://developer.ui.com/site-manager-api/versioncontrol)
-- [Status Page](https://status.ui.com)
-- [Blog](https://www.ui.com/blog)
-- [Forum](https://community.ui.com)
+- [Getting started](https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API)
 - [Support](https://help.ui.com)
-- [Terms of Service](https://www.ui.com/legal/termsofservice/)
-- [Privacy Policy](https://www.ui.com/legal/privacypolicy/)
-- [Investors](https://ir.ui.com/)
-- [GitHub Organization](https://github.com/ubiquiti)
-- [GitHub Organization](https://github.com/ubiquiti-community)
-- [SDK](https://github.com/Art-of-WiFi/UniFi-API-client)
-- [SDK](https://github.com/ubiquiti-community/go-unifi)
-- [SDK](https://github.com/ubiquiti-community/py-unifi)
-- [SDK](https://github.com/DiegoMax/uisp)
-- [Tool](https://github.com/ubiquiti-community/terraform-provider-unifi)
-- [Tool](https://github.com/ubiquiti-community/external-dns-unifi-webhook)
-- [Plans](plans/ubiquiti-plans-pricing.yml)
-- [Rate Limits](rate-limits/ubiquiti-rate-limits.yml)
-- [Features](undefined)
+- [Blog](https://www.ui.com/blog)
+- [Terms of service](https://www.ui.com/legal/termsofservice/)
+- [Privacy policy](https://www.ui.com/legal/privacypolicy/)
+- [GitHub](https://github.com/ubiquiti)
+- [Status](https://status.ui.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 45.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 49.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 42.1 |
+
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ubiquiti/](https://apis.io/providers/ubiquiti/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ubiquiti: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ubiquiti/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
